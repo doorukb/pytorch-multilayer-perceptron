@@ -1,5 +1,7 @@
 # PyTorch MLP
 
+[![CI](https://github.com/doorukb/Customer-Default-Binary-Classification/actions/workflows/ci.yml/badge.svg)](https://github.com/doorukb/Customer-Default-Binary-Classification/actions/workflows/ci.yml)
+
 - Python 3.10+
 - PyTorch
 - NumPy
@@ -8,7 +10,7 @@
 - Matplotlib
 - pytest
 
-A PyTorch reimplementation of the same multilayer perceptron family as the [NumPy Gradient Descent MLP](https://github.com/doorukb/Multilayer-perceptron). The project uses autograd for training, logs experiments to MLflow, runs a fixed hyperparameter grid with strict train/validation/test discipline, registers the sweep winner in the Model Registry, and loads that model by registry URI for inference-only promotion. Analytical gradients are checked against the NumPy reference in `experiments/01_parity_check.py`.
+A PyTorch reimplementation of the same multilayer perceptron family as the [NumPy Gradient Descent MLP](https://github.com/doorukb/gradient-descent-mlp). The project uses autograd for training, logs experiments to MLflow, runs a fixed hyperparameter grid with strict train/validation/test discipline, registers the sweep winner in the Model Registry, and loads that model by registry URI for inference-only promotion. Analytical gradients are checked against the NumPy reference in `experiments/01_parity_check.py`.
 
 ## What it does
 
@@ -20,7 +22,7 @@ Gradient parity (`experiments/01_parity_check.py`) compares PyTorch autograd to 
 
 ## Relationship to the NumPy MLP
 
-[Multilayer-perceptron](https://github.com/doorukb/Multilayer-perceptron) implements forward pass, backpropagation, MSE loss, and gradient descent entirely in NumPy. This repo reuses the same surface generator and split logic, validates that PyTorch gradients match the hand-derived NumPy gradients, then extends the workflow with MLflow tracking, artifact logging, a hyperparameter sweep, and model registry promotion. The NumPy README links here under Roadmap.
+[Multilayer-perceptron](https://github.com/doorukb/gradient-descent-mlp) implements forward pass, backpropagation, MSE loss, and gradient descent entirely in NumPy. This repo reuses the same surface generator and split logic, validates that PyTorch gradients match the hand-derived NumPy gradients, then extends the workflow with MLflow tracking, artifact logging, a hyperparameter sweep, and model registry promotion. The NumPy README links here under Roadmap.
 
 ## RESULTS
 
@@ -166,7 +168,7 @@ Per-run artifacts include hyperparameters, per-epoch train/val metrics, a learni
 
 - Gradient parity against the NumPy reference (optional):
 
-    git clone https://github.com/doorukb/Multilayer-perceptron.git ../Multilayer-Perceptron
+    git clone https://github.com/doorukb/gradient-descent-mlp.git ../Multilayer-Perceptron
     python experiments/01_parity_check.py
 
 - Running experiments from repo root:
